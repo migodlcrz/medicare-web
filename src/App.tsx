@@ -2,6 +2,10 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
+import Sidebar from "./components/SideBar";
+import PatientPage from "./pages/PatientPage";
+import AppointmentPage from "./pages/AppointmentPage";
+import AccountPage from "./pages/AccountPage";
 
 const App = () => {
   return (
@@ -21,10 +25,63 @@ const AppContent = () => {
           element={!user ? <LoginPage /> : <Navigate to="/dashboard" />}
         />
         <Route
+          path="/account"
+          element={
+            user ? (
+              <Layout>
+                <AccountPage />
+              </Layout>
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+        <Route
           path="/dashboard"
-          element={user ? <DashboardPage /> : <Navigate to="/" />}
+          element={
+            user ? (
+              <Layout>
+                <DashboardPage />
+              </Layout>
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+        <Route
+          path="/patients"
+          element={
+            user ? (
+              <Layout>
+                <PatientPage />
+              </Layout>
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+        <Route
+          path="/appointments"
+          element={
+            user ? (
+              <Layout>
+                <AppointmentPage />
+              </Layout>
+            ) : (
+              <Navigate to="/" />
+            )
+          }
         />
       </Routes>
+    </div>
+  );
+};
+
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="flex">
+      <Sidebar />
+      <main>{children}</main>
     </div>
   );
 };
