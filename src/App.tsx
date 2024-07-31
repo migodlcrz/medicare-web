@@ -5,7 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import Sidebar from "./components/SideBar";
 import PatientPage from "./pages/PatientPage";
 import AppointmentPage from "./pages/AppointmentPage";
-import AccountPage from "./pages/AccountPage";
+import Header from "./components/Header";
 
 const App = () => {
   return (
@@ -23,18 +23,6 @@ const AppContent = () => {
         <Route
           path="/"
           element={!user ? <LoginPage /> : <Navigate to="/dashboard" />}
-        />
-        <Route
-          path="/account"
-          element={
-            user ? (
-              <Layout>
-                <AccountPage />
-              </Layout>
-            ) : (
-              <Navigate to="/" />
-            )
-          }
         />
         <Route
           path="/dashboard"
@@ -80,8 +68,13 @@ const AppContent = () => {
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex">
-      <Sidebar />
-      <main>{children}</main>
+      <div className="w-1/6">
+        <Sidebar />
+      </div>
+      <main className="flex flex-col w-5/6">
+        <Header />
+        {children}
+      </main>
     </div>
   );
 };
