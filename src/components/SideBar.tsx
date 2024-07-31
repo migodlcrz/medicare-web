@@ -10,28 +10,23 @@ const Sidebar = () => {
   const path = window.location.pathname.substring(1);
 
   return (
-    <div className="flex flex-col p-3 top-0 sticky z-50 bg-slate-100 w-64 h-screen border-[0.5px] border-gray-200 space-y-2">
+    <div className="flex flex-col p-3 top-0 sticky z-50 bg-slate-100 w-full h-screen border-[0.5px] border-gray-200 space-y-2">
       <div className="flex flex-row w-full items-center space-x-2">
         <img src="/logo.png" alt="" className="w-10 h-10" />
         <span className="text-black outfit text-2xl">Medicare</span>
       </div>
       <div className="flex flex-col w-full h-full p-2">
-        <button
-          onClick={() => {
-            navigate("/account");
-          }}
-          className={`flex flex-row w-full space-x-3 items-center border-[0.5px] border-gray-200 p-2 rounded-2xl hover:bg-cerulean-200 transition-colors ${
-            path === "account" && "bg-cerulean-200"
-          }`}
-        >
+        <div className="flex flex-row w-full space-x-3 items-center border-[0.5px] border-gray-200 p-2 rounded-2xl">
           <img src="/avatar.png" alt="" className="w-1/5 rounded-full" />
           <div className="flex flex-col w-4/5 text-start">
             <span className="text-sm outfit text-cerulean-600">
-              {user.name}
+              Avenida Clinic
             </span>
-            <span className="text-xs outfit text-gray-500">Ophtalmologist</span>
+            <span className="text-xs outfit text-gray-500">
+              11 Charity Street, Meycauayan
+            </span>
           </div>
-        </button>
+        </div>
         <div className="flex flex-col w-full py-2 space-y-2">
           <button
             onClick={() => navigate("/dashboard")}
