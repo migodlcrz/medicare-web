@@ -41,7 +41,7 @@ const LoginPanel = () => {
           name="username"
           id="username"
           value={username || ""}
-          className="border-[0.5px] border-gray-300 rounded-2xl px-5 py-2 bg-white outline-none"
+          className="border-[0.5px] border-gray-300 rounded-2xl px-5 py-2 bg-white outline-none text-black"
           onChange={(e) => {
             setUsername(e.target.value);
           }}
@@ -55,7 +55,7 @@ const LoginPanel = () => {
             name="password"
             id="password"
             value={password || ""}
-            className="flex-1 outline-none"
+            className="flex-1 outline-none bg-white text-black"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
